@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import FormComponent from "./FormComponent";
 import PostComponent from "./PostComponent";
+import NavBar from "./nav-layout/layout";
+import LoginComponent from "./login-layout/login";
 
 
 class App extends Component {
@@ -19,9 +21,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <FormComponent/>
-                <hr/>
-                <PostComponent/>
+                <NavBar/>
+                <LoginComponent/>
             </div>
         );
     }

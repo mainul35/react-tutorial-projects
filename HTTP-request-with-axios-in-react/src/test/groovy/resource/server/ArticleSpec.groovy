@@ -1,9 +1,9 @@
 package resource.server
 
-import grails.testing.web.controllers.ControllerUnitTest
+import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class PostControllerSpec extends Specification implements ControllerUnitTest<PostController> {
+class ArticleSpec extends Specification implements DomainUnitTest<Article> {
 
     def setup() {
     }
