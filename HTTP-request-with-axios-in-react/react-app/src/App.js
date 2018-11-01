@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FormComponent from "./FormComponent";
+import {LoginFormComponent} from "./LoginFormComponent";
 import PostComponent from "./PostComponent";
 
 
@@ -19,7 +19,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <FormComponent/>
+                <LoginFormComponent/>
                 <hr/>
                 <PostComponent/>
             </div>
