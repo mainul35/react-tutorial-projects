@@ -2,8 +2,10 @@ const path = require('path')
 module.exports = {
     entry: './src/index.js',
     output: {
-      path: path.join(__dirname, '../grails-app/assets/javascripts'),
-      filename: 'application.js'
+      // path: path.join(__dirname, '../grails-app/assets/javascripts'),
+      path: path.join(__dirname, 'public'),
+      // filename: 'application.js'
+      filename: 'bundle.js'
     },
     module:{
       rules:[

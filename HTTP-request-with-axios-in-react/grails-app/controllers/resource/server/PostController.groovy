@@ -1,6 +1,6 @@
 package resource.server
 
-class PostController {
+class UserController {
 
     def index() { }
 }
