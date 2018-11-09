@@ -3,10 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
-import NavBar from "./nav-layout/layout";
+import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const dashboardComponent = () => (
+    <div>
+        <h3>This is dashboard page</h3>
+    </div>
+)
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+const loginPage = () => (
+    <div>
+        <h3>This is login page</h3>
+    </div>
+)
+
+const notFoundPage = () => (
+    <div>
+        <h3>404: Not Found</h3>
+        <Link to="/">Go Home</Link>
+    </div>
+)
+const routes = (
+    <BrowserRouter>
+        <Switch>
+            <Route exact path='/' component={dashboardComponent}/>
+            <Route exact path='/login' component={loginPage}/>
+            <Route component={notFoundPage}/>
+        </Switch>
+    </BrowserRouter>
+)
+ReactDOM.render(routes, document.getElementById('root'));

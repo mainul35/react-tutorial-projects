@@ -3,39 +3,38 @@ import {Button, Form, FormGroup, Label, Input, FormText, Alert, Container, Col} 
 import './LoginComponent.css'
 import axios from 'axios'
 
-
-const cred = {
-    email: '',
-    password:''
-};
-
 class LoginForm extends Component {
 
-
-
-    submitPost = () => {
-
+    constructor() {
+        super();
+        this.state = {
+            email: '',
+            password:''
+        }
+        this.login = this.login.bind(this);
+        this.change = this.change.bind(this)
     }
 
-    submitPost = () => {
-
-        let api = axios.create({baseURL: ''});
+    login = (e) => {
+        e.preventDefault()
+        let api = axios.create({baseURL: 'http://localhost:8080/'});
         let encodedData = btoa(JSON.stringify(this.state));
 
+        api.post('auth/login?data='+encodedData )
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     change = e => {
         this.setState({
             [e.target.name]: e.target.value
         })
+        console.log(this.state)
     };
-
-    constructor() {
-        super();
-        this.state = cred
-        this.submitPost = this.submitPost.bind(this);
-        this.change = this.change.bind(this)
-    }
 
     render() {
         return (
@@ -43,12 +42,12 @@ class LoginForm extends Component {
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-6 login-form-2">
                         <h3>Login</h3>
-                        <form onSubmit={this.submitPost.bind(this)}>
+                        <form onSubmit={e=>this.login(e)}>
                             <div className="form-group">
-                                <input type="text" className="form-control" name='email' onChange={this.change.bind(this)} placeholder="Your Email" value=""/>
+                                <input type="text" className="form-control" name='email' onInput={e => this.change(e)} placeholder="Your Email" />
                             </div>
                             <div className="form-group">
-                                <input type="password" className="form-control" name='password' onChange={this.change.bind(this)} placeholder="Your Password" value=""/>
+                                <input type="password" className="form-control" name='password' onInput={e => this.change(e)} placeholder="Your Password"/>
                             </div>
                             <div className="form-group">
                                 <input type="submit" className="btnSubmit" value="Login"/>
